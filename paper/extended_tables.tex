@@ -1,0 +1,83 @@
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{lrrrrr}
+\hline
+Subset & \shortstack{EN\\acc. (\%)} & \shortstack{ZH\\acc. (\%)} & \shortstack{LS\\acc. (\%)} & \shortstack{EN--ZH\\judgment flip (\%)} & \shortstack{EN--LS\\judgment flip (\%)} \\
+\hline
+Adv-GPTInst & 85.9 & 82.5 & 81.9 & 11.1 & 10.5 \\
+Adv-GPTOut & 74.5 & 68.9 & 71.5 & 16.5 & 15.7 \\
+Adv-Manual & 80.6 & 74.7 & 76.5 & 14.4 & 10.1 \\
+Adv-Neighbor & 80.6 & 77.0 & 75.8 & 11.8 & 12.3 \\
+Natural & 92.7 & 87.9 & 88.6 & 12.9 & 12.3 \\
+\hline
+\end{tabular}
+\caption{Subset-level averages across the four judges. Accuracy uses tie-half scoring; judgment flip compares transformed language conditions with English. All rates are percentages.}
+\label{tab:source-aggregate}
+\end{table*}
+
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{lrrr}
+\hline
+Model & \shortstack{EN\\(\%)} & \shortstack{ZH\\(\%)} & \shortstack{LS\\(\%)} \\
+\hline
+Claude Haiku & 13.6 & 15.3 & 18.4 \\
+DeepSeek & 9.3 & 11.5 & 12.7 \\
+Gemini Flash & 10.3 & 16.0 & 22.2 \\
+GPT-4.1 Mini & 15.0 & 16.7 & 19.1 \\
+\hline
+Mean & 12.1 & 14.9 & 18.1 \\
+\hline
+\end{tabular}
+\caption{Position inconsistency by model and language condition. A case is inconsistent when the normalized winner changes after swapping answer order; all rates are percentages.}
+\label{tab:position-extra}
+\end{table}
+
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{p{0.68\linewidth}rr}
+\hline
+Audit check & Count & \shortstack{Rate\\(\%)} \\
+\hline
+Unique transformed items & 419 & 100.0 \\
+Complete EN/ZH/LS fields & 419 & 100.0 \\
+Manual JSON repair & 1 & 0.2 \\
+Mechanically flagged high-risk items & 19 & 4.5 \\
+Items retained in sensitivity analysis & 400 & 95.5 \\
+\hline
+\end{tabular}
+\caption{Automatic transformation audit. High-risk flags are conservative mechanical warnings based on empty fields, severe length shrinkage, or large numeric-token count changes; they are not treated as semantic labels.}
+\label{tab:variant-audit}
+\end{table}
+
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{llrrrr}
+\hline
+Model & \shortstack{Language\\pair} & N & \shortstack{Full judgment\\flip (\%)} & \shortstack{Filtered judgment\\flip (\%)} & \shortstack{Correctness\\test p} \\
+\hline
+Claude Haiku & EN--LS & 838 & 12.3 & 10.8 & 0.000131 \\
+Claude Haiku & EN--ZH & 838 & 14.2 & 13.0 & 0.000598 \\
+DeepSeek & EN--LS & 838 & 10.7 & 9.1 & 0.00804 \\
+DeepSeek & EN--ZH & 838 & 11.1 & 9.8 & 0.0105 \\
+Gemini Flash & EN--LS & 838 & 12.2 & 10.8 & 2.2e-05 \\
+Gemini Flash & EN--ZH & 838 & 11.1 & 10.0 & 0.000313 \\
+GPT-4.1 Mini & EN--LS & 838 & 12.9 & 12.2 & 1e-06 \\
+GPT-4.1 Mini & EN--ZH & 838 & 14.4 & 13.8 & 2e-06 \\
+\hline
+\end{tabular}
+\caption{Sensitivity and paired-significance checks. Filtered judgment flip excludes mechanically flagged high-risk transformation items. The p-value is an exact two-sided McNemar/binomial test on strict gold-correctness changes between English and the target language.}
+\label{tab:sensitivity-significance}
+\end{table*}

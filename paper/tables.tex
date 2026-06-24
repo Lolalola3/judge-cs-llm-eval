@@ -1,0 +1,88 @@
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{llrrrrrr}
+\hline
+Model & \shortstack{Language\\condition} & N & \shortstack{Strict\\acc. (\%)} & \shortstack{Tie-half\\acc. (\%)} & \shortstack{Tie-half\\95\% CI} & \shortstack{Position-A\\rate (\%)} & \shortstack{Tie\\rate (\%)} \\
+\hline
+Claude Haiku & LS & 838 & 73.9 & 74.4 & [71.5, 77.3] & 49.4 & 1.1 \\
+Claude Haiku & EN & 838 & 78.5 & 78.9 & [76.1, 81.6] & 52.5 & 0.7 \\
+Claude Haiku & ZH & 838 & 74.0 & 74.3 & [71.4, 77.3] & 53.0 & 0.7 \\
+DeepSeek & LS & 838 & 86.5 & 88.9 & [86.9, 90.9] & 50.8 & 4.8 \\
+DeepSeek & EN & 838 & 89.5 & 90.5 & [88.5, 92.4] & 51.8 & 1.9 \\
+DeepSeek & ZH & 838 & 86.5 & 87.8 & [85.6, 89.9] & 53.1 & 2.5 \\
+Gemini Flash & LS & 838 & 82.3 & 82.9 & [80.4, 85.5] & 59.2 & 1.2 \\
+Gemini Flash & EN & 838 & 87.5 & 87.8 & [85.6, 90.0] & 54.3 & 0.6 \\
+Gemini Flash & ZH & 838 & 83.3 & 83.7 & [81.2, 86.2] & 56.9 & 0.8 \\
+GPT-4.1 Mini & LS & 838 & 72.0 & 73.0 & [70.1, 76.0] & 50.8 & 2.1 \\
+GPT-4.1 Mini & EN & 838 & 77.9 & 78.8 & [76.0, 81.5] & 53.7 & 1.7 \\
+GPT-4.1 Mini & ZH & 838 & 71.7 & 72.8 & [69.8, 75.8] & 52.6 & 2.1 \\
+\hline
+\end{tabular}
+\caption{Quality-judgment accuracy by language condition on LLMBar. Strict accuracy counts ties as incorrect; tie-half gives ties half credit. Position-A is choosing the displayed first answer before order normalization; all rates are percentages.}
+\label{tab:quality}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\small
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{llrrrrr}
+\hline
+Model & \shortstack{Language\\pair} & N & \shortstack{Judgment\\flip (\%)} & \shortstack{Judgment flip\\95\% CI} & \shortstack{Correctness\\flip (\%)} & \shortstack{Correctness flip\\95\% CI} \\
+\hline
+Claude Haiku & EN--LS & 838 & 12.3 & [10.2, 14.7] & 12.0 & [10.0, 14.4] \\
+Claude Haiku & EN--ZH & 838 & 14.2 & [12.0, 16.7] & 14.1 & [11.9, 16.6] \\
+DeepSeek & EN--LS & 838 & 10.7 & [8.8, 13.0] & 9.9 & [8.1, 12.1] \\
+DeepSeek & EN--ZH & 838 & 11.1 & [9.2, 13.4] & 10.6 & [8.7, 12.9] \\
+Gemini Flash & EN--LS & 838 & 12.2 & [10.1, 14.6] & 12.0 & [10.0, 14.4] \\
+Gemini Flash & EN--ZH & 838 & 11.1 & [9.2, 13.4] & 10.9 & [8.9, 13.2] \\
+GPT-4.1 Mini & EN--LS & 838 & 12.9 & [10.8, 15.3] & 12.2 & [10.1, 14.6] \\
+GPT-4.1 Mini & EN--ZH & 838 & 14.4 & [12.2, 17.0] & 14.1 & [11.9, 16.6] \\
+\hline
+\end{tabular}
+\caption{Language-invariance flip rates relative to English. Judgment flip counts any changed normalized preference; correctness flip counts a change between strict gold-correct and not strict gold-correct. All rates and intervals are percentages.}
+\label{tab:invariance}
+\end{table*}
+
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{lrrrrr}
+\hline
+Model & N & \shortstack{EN wins\\(\%)} & \shortstack{ZH wins\\(\%)} & \shortstack{Tie\\(\%)} & \shortstack{EN share\\non-tie (\%)} \\
+\hline
+Claude Haiku & 838 & 2.6 & 15.0 & 82.3 & 14.9 \\
+DeepSeek & 838 & 0.7 & 1.8 & 97.5 & 28.6 \\
+Gemini Flash & 838 & 3.1 & 4.3 & 92.6 & 41.9 \\
+GPT-4.1 Mini & 838 & 0.7 & 3.7 & 95.6 & 16.2 \\
+\hline
+\end{tabular}
+\caption{Language preference in translation-equivalent tie probes. EN/ZH win rates indicate which language version is preferred; EN share is computed over non-tie decisions. All rates are percentages.}
+\label{tab:tieprobe}
+\end{table}
+
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{lrrr}
+\hline
+Model & Calls & \shortstack{Input\\tokens} & \shortstack{Output\\tokens} \\
+\hline
+Claude Haiku & 3352 & 1,431,634 & 413,642 \\
+DeepSeek & 3352 & 1,104,204 & 1,363,065 \\
+Gemini Flash & 3352 & 1,158,978 & 1,726,713 \\
+GPT-4.1 Mini & 3352 & 1,191,632 & 183,183 \\
+Variant gen. & 418 & 192,979 & 235,786 \\
+\hline
+\end{tabular}
+\caption{Observed or approximated API usage. Costs depend on the endpoint's billing plan.}
+\label{tab:usage}
+\end{table}

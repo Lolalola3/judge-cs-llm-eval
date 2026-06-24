@@ -1,0 +1,20 @@
+{
+  "variant_generation_model": "gpt-4.1-mini",
+  "judge_models": [
+    "gpt-4.1-mini",
+    "claude-haiku-4-5-20251001",
+    "gemini-2.5-flash",
+    "deepseek-v4-flash"
+  ],
+  "optional_strong_judges": [
+    "gpt-4.1",
+    "claude-sonnet-4-6",
+    "gemini-2.5-pro",
+    "deepseek-v4-pro"
+  ],
+  "notes": [
+    "The provided proxy endpoint returned model_not_found for bare gpt-4.",
+    "Use exact model IDs exposed by GET /v1/models.",
+    "deepseek-v4-flash can return long reasoning_content before final JSON; use max_tokens around 2500 or switch to deepseek-chat."
+  ]
+}

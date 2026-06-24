@@ -1,0 +1,13 @@
+{
+  "seed": 13,
+  "limit": 419,
+  "num_items": 419,
+  "sampling": "all_items_shuffled",
+  "sources": {
+    "Adv-GPTInst": 92,
+    "Adv-GPTOut": 47,
+    "Adv-Manual": 46,
+    "Adv-Neighbor": 134,
+    "Natural": 100
+  }
+}
