@@ -35,7 +35,7 @@ RESULTS = ROOT / "results"
 FIGURES = RESULTS / "figures"
 PAPER = ROOT / "paper"
 
-DEFAULT_API_BASE = "http://35.220.164.252:3888/v1/chat/completions"
+DEFAULT_API_BASE = ""
 DEFAULT_MODEL = "gpt-4.1-mini"
 
 QUALITY_SYSTEM = (
@@ -254,6 +254,8 @@ def get_client(args: argparse.Namespace) -> ApiClient:
     if not api_key:
         raise RuntimeError("JUDGE_API_KEY is not set. Set it in the shell before calling the API.")
     api_base = os.environ.get("JUDGE_API_BASE", args.api_base or DEFAULT_API_BASE).strip()
+    if not api_base:
+        raise RuntimeError("JUDGE_API_BASE is not set. Set it in the shell or pass --api-base.")
     return ApiClient(api_base=api_base, api_key=api_key, timeout=args.timeout, retries=args.retries)
 
 

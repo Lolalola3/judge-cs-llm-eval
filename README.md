@@ -21,9 +21,12 @@ current shell session:
 
 ```powershell
 $env:JUDGE_API_KEY = "YOUR_KEY"
-$env:JUDGE_API_BASE = "http://35.220.164.252:3888/v1/chat/completions"
+$env:JUDGE_API_BASE = "https://YOUR-PROXY-OR-PROVIDER/v1/chat/completions"
 $env:PYTHONNOUSERSITE = "1"
 ```
+
+Do not commit a real API key or private proxy endpoint. Keep them in shell
+environment variables or a local `.env` file ignored by git.
 
 The example API request used `gpt-4`, but the proxy reported no active channel
 for that exact model name during setup. The project therefore uses

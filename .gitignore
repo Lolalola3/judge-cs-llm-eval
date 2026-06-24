@@ -1,4 +1,13 @@
 .env
+.env.*
+*.env
+!.env.example
+*secret*
+*credentials*
+*.key
+*.pem
+*.p12
+*.pfx
 *.log
 __pycache__/
 *.pyc
@@ -7,6 +16,7 @@ __pycache__/
 venv/
 logs/
 work/
+api_responses/
 data/processed/*.jsonl
 results/*.jsonl
 results/*.csv
